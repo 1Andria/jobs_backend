@@ -26,7 +26,9 @@ export class AuthService {
   }: CreateCompanyDto) {
     const existCompany = await this.companyModel.findOne({ email });
     if (existCompany)
-      throw new BadRequestException('Company already exists with this email');
+      throw new BadRequestException(
+        'Company already exists with this email try another one',
+      );
 
     const hashedPass = await bcrypt.hash(password, 10);
     const newCompany = await this.companyModel.create({
@@ -46,9 +48,8 @@ export class AuthService {
     const inviteLink = `${process.env.FRONT_URL}/auth/verify-company?token=${token}`;
 
     await this.emailSenderService.sendInviteLink(email, inviteLink);
-
     return {
-      message: 'Invitation link sent to company email',
+      message: 'Invitation link sent to company email please check and verify',
     };
   }
 }
