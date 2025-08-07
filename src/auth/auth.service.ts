@@ -49,7 +49,8 @@ export class AuthService {
 
     await this.emailSenderService.sendInviteLink(email, inviteLink);
     return {
-      message: 'Invitation link sent to company email please check and verify',
+      message:
+        'Invitation link sent to company email please check and verify your account',
     };
   }
 }
