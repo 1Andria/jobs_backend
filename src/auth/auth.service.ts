@@ -46,7 +46,9 @@ export class AuthService {
     );
 
     const inviteLink = `${process.env.FRONT_URL}/auth/verify-company-account?token=${token}`;
+
     await this.emailSenderService.sendInviteLink(email, inviteLink);
+
     return {
       message:
         'Invitation link sent to company email please check and verify your account',
