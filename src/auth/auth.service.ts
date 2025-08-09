@@ -35,8 +35,8 @@ export class AuthService {
       country,
       email,
       industry,
-      isApproved: false,
       name,
+      isApproved: false,
       password: hashedPass,
     });
 
