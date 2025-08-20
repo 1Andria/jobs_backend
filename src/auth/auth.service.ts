@@ -42,6 +42,7 @@ export class AuthService {
 
     const token = this.jwtService.sign(
       { id: newCompany._id },
+
       { expiresIn: '1h' },
     );
 
